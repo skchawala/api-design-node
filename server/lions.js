@@ -23,6 +23,7 @@ lionRouter.param('id', function(req, res, next, id) {
 });
 
 lionRouter.get('/', function(req, res){
+  next()
   res.json(lions);
 });
 
@@ -53,6 +54,12 @@ lionRouter.put('/:id', function(req, res) {
     var updatedLion = _.assign(lions[lion], update);
     res.json(updatedLion);
   }
+});
+lionRouter.use(function(err, req, res, next) {
+  next('hi')
+  // if (err) {
+  //   res.status(500).send("this second");
+  // }
 });
 
 module.exports = lionRouter;

@@ -17,12 +17,17 @@ app.use(bodyParser.json());
 // '/lion' we want to use this router
 app.use('/lions', lionRouter);
 
+app.use('/',function(req,res,next){
+      console.log('###############hi');
+      res.send('#################')
+})
+
 app.use(function(err, req, res, next) {
   if (err) {
-    res.status(500).send(error);
+    res.status(500).send("first first first first");
   }
 });
 
 
-app.listen(3000);
-console.log('on port 3000');
+app.listen(9002);
+console.log('on port 9002');
